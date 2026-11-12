@@ -1,15 +1,22 @@
 
-# Python environment
+# Python virtual environments
 venv/
 .venv/
-__pycache__/
-*.pyc
 
-# IDE
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# IDE settings
 .vscode/
 
-# Environment variables
+# Environment variables and secrets
 .env
+.env.*
 
-# Original raw datasets
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Original raw datasets (keep locally)
 data/raw/
