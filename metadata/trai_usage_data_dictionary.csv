@@ -1,0 +1,19 @@
+file_name,column_name,description,data_type,unit
+usage_by_service_area.csv,service_area,Telecom service area,string,Text
+usage_by_service_area.csv,category,TRAI service-area category,string,Text
+usage_by_service_area.csv,prepaid_percentage,Percentage of prepaid subscribers in total subscribers,string,Percentage
+usage_by_service_area.csv,arpu_inr_per_month,Average revenue per user per month,integer,INR
+usage_by_service_area.csv,outgoing_sms_per_month,Average outgoing SMS per subscriber per month,integer,SMS
+usage_by_service_area.csv,outgoing_mou_per_month,Outgoing minutes of usage per subscriber per month,integer,Minutes
+usage_by_service_area.csv,incoming_mou_per_month,Incoming minutes of usage per subscriber per month,integer,Minutes
+usage_by_service_area.csv,total_mou_per_month,Total minutes of usage per subscriber per month,integer,Minutes
+usage_by_service_area.csv,reporting_period,Reporting period of the source data,string,Quarter
+wireless_usage_trends.csv,reporting_period,Quarter represented by the record,string,Quarter
+wireless_usage_trends.csv,source_table,Original TRAI table identifier,string,Text
+wireless_usage_trends.csv,arpu_inr_per_month,Average revenue per user per month,float,INR
+wireless_usage_trends.csv,revenue_realization_per_gb_inr,Average revenue realization per subscriber per GB of wireless data,float,INR per GB
+wireless_usage_trends.csv,mou_per_subscriber,Minutes of usage per subscriber per month,integer,Minutes
+wireless_usage_trends.csv,local_outgoing_mou,Outgoing local intra-circle minutes per subscriber per month,integer,Minutes
+wireless_usage_trends.csv,nld_outgoing_mou,Outgoing national long-distance inter-circle minutes per subscriber per month,integer,Minutes
+wireless_usage_trends.csv,ild_outgoing_mou,Outgoing international long-distance minutes per subscriber per month,float,Minutes
+wireless_usage_trends.csv,outgoing_sms_per_subscriber,Average outgoing SMS per subscriber per month,float,SMS

@@ -1,0 +1,9 @@
+
+pandas
+numpy
+requests
+pdfplumber
+openpyxl
+matplotlib
+jupyter
+pyarrow

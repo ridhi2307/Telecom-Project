@@ -1,0 +1,34 @@
+column_name,data_type,description
+CustomerID,String,Unique customer identifier
+Count,Integer,Record count indicator
+Country,String,Customer country
+State,String,Customer state
+City,String,Customer city
+Zip Code,String,Customer postal code
+Lat Long,String,Customer latitude and longitude combined
+Latitude,Float,Customer latitude
+Longitude,Float,Customer longitude
+Gender,String,Customer gender
+Senior Citizen,String,Indicates whether customer is a senior citizen
+Partner,String,Indicates whether customer has a partner
+Dependents,String,Indicates whether customer has dependents
+Tenure Months,Integer,Number of months the customer has stayed
+Phone Service,String,Indicates whether phone service is subscribed
+Multiple Lines,String,Indicates whether multiple phone lines are subscribed
+Internet Service,String,Type of internet service
+Online Security,String,Indicates whether online security is subscribed
+Online Backup,String,Indicates whether online backup is subscribed
+Device Protection,String,Indicates whether device protection is subscribed
+Tech Support,String,Indicates whether technical support is subscribed
+Streaming TV,String,Indicates whether streaming TV is subscribed
+Streaming Movies,String,Indicates whether streaming movies is subscribed
+Contract,String,Customer contract type
+Paperless Billing,String,Indicates whether paperless billing is enabled
+Payment Method,String,Customer payment method
+Monthly Charges,Float,Customer monthly charges
+Total Charges,String,Customer total charges; whitespace-only values are present
+Churn Label,String,Customer churn status Yes or No
+Churn Value,Integer,Numeric churn indicator 1 or 0
+Churn Score,Integer,Churn score supplied by the dataset
+CLTV,Integer,Customer lifetime value supplied by the dataset
+Churn Reason,String,Recorded reason for customer churn

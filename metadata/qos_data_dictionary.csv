@@ -1,0 +1,17 @@
+column_name,original_heading,description,unit,source_page
+serial_number,S No,Unique record number,Number,2
+operator,Service Provider,Name of telecom service provider,Text,2
+lsa,LSA,Licensed Service Area code,Text,2
+metric_01,Availability of service wise geospatial coverage map on service provider website,Availability of the coverage map showing working cells,Percentage,2
+metric_02,Cumulative downtime (Cells not available for service),Cumulative downtime of cells unavailable for service,Percentage,2
+metric_03,Worst Affected Cells due to downtime,Percentage of worst affected cells due to downtime,Percentage,2
+metric_04,Percentage of significant network outage,Percentage of significant network outages reported within the prescribed period,Percentage,2
+metric_05,Call Set-up Success Rate Intra-Service provider,Call setup success rate within the same service provider,Percentage,2
+metric_06,Call Set-up Success Rate Inter-Service provider,Call setup success rate between different service providers,Percentage,2
+metric_07,Point of Interconnection Congestion (90th percentile value),Point of interconnection congestion measured at the 90th percentile,Percentage,2
+metric_08,DCR Spatial Distribution Measure for Circuit Switched Network,Spatial distribution measure for circuit-switched network,Percentage,2
+metric_09,DCR Spatial Distribution Measure for Packet Switched Network,Spatial distribution measure for packet-switched network,Percentage,2
+metric_10,Downlink Packet Drop Rate for Packet Switched Network,Downlink packet drop rate,Percentage,2
+metric_11,Uplink Packet Drop Rate for Packet Switched Network,Uplink packet drop rate,Percentage,2
+metric_12,Latency in 4G and 5G network,Network latency,Milliseconds,2
+metric_13,Packet Drop Rate in 4G and 5G network,Packet drop rate,Percentage,2
