@@ -1,0 +1,854 @@
+{
+  "datasets": [
+    {
+      "name": "be3fb01c",
+      "displayName": "Customer Churn and Wireless Usage Insights Overview",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_overview;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_contract;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_payment_method;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_service;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.trai_lsa_switching_usage_context;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.trai_national_wireless_usage_trends;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_overview;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_contract;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_payment_method;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_service;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context\n",
+        "LIMIT 20;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.trai_national_wireless_usage_trends\n",
+        "LIMIT 20;\n",
+        "\n",
+        "\n",
+        "CREATE OR REPLACE VIEW workspace.gold.ibm_churn_segment_analysis AS\n",
+        "\n",
+        "SELECT\n",
+        "    'Contract' AS segment_type,\n",
+        "    Contract AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_contract\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Payment Method' AS segment_type,\n",
+        "    Payment_Method AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_payment_method\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Internet Service' AS segment_type,\n",
+        "    Internet_Service AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_service\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Customer Tenure' AS segment_type,\n",
+        "    tenure_band AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Contract'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Payment Method'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Internet Service'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment_type,\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis;"
+      ]
+    },
+    {
+      "name": "dde4d2ed",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_overview;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_contract;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_payment_method;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_service;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.trai_lsa_switching_usage_context;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.trai_national_wireless_usage_trends;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_overview;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_contract;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_payment_method;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_service;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context\n",
+        "LIMIT 20;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.trai_national_wireless_usage_trends\n",
+        "LIMIT 20;\n",
+        "\n",
+        "\n",
+        "CREATE OR REPLACE VIEW workspace.gold.ibm_churn_segment_analysis AS\n",
+        "\n",
+        "SELECT\n",
+        "    'Contract' AS segment_type,\n",
+        "    Contract AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_contract\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Payment Method' AS segment_type,\n",
+        "    Payment_Method AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_payment_method\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Internet Service' AS segment_type,\n",
+        "    Internet_Service AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_service\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Customer Tenure' AS segment_type,\n",
+        "    tenure_band AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Contract'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Payment Method'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Internet Service'\n",
+        "ORDER BY churn_rate_percent DESC;"
+      ]
+    },
+    {
+      "name": "2f1e58d7",
+      "displayName": "Churn Analysis and Insights for IBM Services",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_overview;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_contract;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_payment_method;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_service;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.trai_lsa_switching_usage_context;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.trai_national_wireless_usage_trends;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_overview;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_contract;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_payment_method;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_service;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context\n",
+        "LIMIT 20;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.trai_national_wireless_usage_trends\n",
+        "LIMIT 20;\n",
+        "\n",
+        "\n",
+        "CREATE OR REPLACE VIEW workspace.gold.ibm_churn_segment_analysis AS\n",
+        "\n",
+        "SELECT\n",
+        "    'Contract' AS segment_type,\n",
+        "    Contract AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_contract\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Payment Method' AS segment_type,\n",
+        "    Payment_Method AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_payment_method\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Internet Service' AS segment_type,\n",
+        "    Internet_Service AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_service\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Customer Tenure' AS segment_type,\n",
+        "    tenure_band AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Contract'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Payment Method'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Internet Service'\n",
+        "ORDER BY churn_rate_percent DESC;"
+      ]
+    },
+    {
+      "name": "e0264b89",
+      "displayName": "Customer Churn Insights and Usage Behavior Overview",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_overview;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_contract;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_payment_method;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_service;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.trai_lsa_switching_usage_context;\n",
+        "\n",
+        "DESCRIBE TABLE workspace.gold.trai_national_wireless_usage_trends;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_overview;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_contract;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_payment_method;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_service;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context\n",
+        "LIMIT 20;\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.trai_national_wireless_usage_trends\n",
+        "LIMIT 20;\n",
+        "\n",
+        "\n",
+        "CREATE OR REPLACE VIEW workspace.gold.ibm_churn_segment_analysis AS\n",
+        "\n",
+        "SELECT\n",
+        "    'Contract' AS segment_type,\n",
+        "    Contract AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_contract\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Payment Method' AS segment_type,\n",
+        "    Payment_Method AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_payment_method\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Internet Service' AS segment_type,\n",
+        "    Internet_Service AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_service\n",
+        "\n",
+        "UNION ALL\n",
+        "\n",
+        "SELECT\n",
+        "    'Customer Tenure' AS segment_type,\n",
+        "    tenure_band AS segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_by_tenure;\n",
+        "\n",
+        "\n",
+        "SELECT *\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Contract'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Payment Method'\n",
+        "ORDER BY churn_rate_percent DESC;\n",
+        "\n",
+        "\n",
+        "SELECT\n",
+        "    segment,\n",
+        "    total_customers,\n",
+        "    churned_customers,\n",
+        "    churn_rate_percent\n",
+        "FROM workspace.gold.ibm_churn_segment_analysis\n",
+        "WHERE segment_type = 'Internet Service'\n",
+        "ORDER BY churn_rate_percent DESC;"
+      ]
+    },
+    {
+      "name": "703a53d0",
+      "displayName": "ibm_churn_segment_analysis",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.gold.ibm_churn_segment_analysis",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "3244e74f",
+      "displayName": "Untitled Page",
+      "layout": [
+        {
+          "widget": {
+            "name": "c60de014",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "703a53d0",
+                  "fields": [
+                    {
+                      "name": "segment_type",
+                      "expression": "`segment_type`"
+                    },
+                    {
+                      "name": "segment",
+                      "expression": "`segment`"
+                    },
+                    {
+                      "name": "avg(churn_rate_percent)",
+                      "expression": "AVG(`churn_rate_percent`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "IBM Customer Churn Segment Analysis",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(churn_rate_percent)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "segment_type",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "0c9a258f",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "703a53d0",
+                  "fields": [
+                    {
+                      "name": "segment",
+                      "expression": "`segment`"
+                    },
+                    {
+                      "name": "avg(churn_rate_percent)",
+                      "expression": "AVG(`churn_rate_percent`)"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "`segment_type` IN ('Contract')"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Customer Churn by Contract Type",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(churn_rate_percent)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "cdd2cae3",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "703a53d0",
+                  "fields": [
+                    {
+                      "name": "segment",
+                      "expression": "`segment`"
+                    },
+                    {
+                      "name": "avg(churn_rate_percent)",
+                      "expression": "AVG(`churn_rate_percent`)"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "`segment_type` IN ('Payment Method')"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Customer Churn by Payment Method",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(churn_rate_percent)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 6,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "b536fe94",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "703a53d0",
+                  "fields": [
+                    {
+                      "name": "segment",
+                      "expression": "`segment`"
+                    },
+                    {
+                      "name": "avg(churn_rate_percent)",
+                      "expression": "AVG(`churn_rate_percent`)"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "`segment_type` IN ('Internet Service')"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Customer Churn by Internet Service",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(churn_rate_percent)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "churn_by_tenure",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "703a53d0",
+                  "fields": [
+                    {
+                      "name": "segment",
+                      "expression": "`segment`"
+                    },
+                    {
+                      "name": "avg(churn_rate_percent)",
+                      "expression": "AVG(`churn_rate_percent`)"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "`segment_type` IN ('Customer Tenure')"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Customer Churn by Tenure",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(churn_rate_percent)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 12,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
