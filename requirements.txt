@@ -20,3 +20,13 @@ matplotlib>=3.7.0
 
 # Optional: Live Databricks SQL Warehouse Connection
 # databricks-sql-connector>=3.0.0
+
+
+pandas
+numpy
+requests
+pdfplumber
+openpyxl
+matplotlib
+jupyter
+pyarrow
