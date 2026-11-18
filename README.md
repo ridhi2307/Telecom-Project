@@ -194,8 +194,7 @@ Telecom-Project/
 ├── notebooks/                                     # PySpark Pipelines
 │   └── 01_bronze_ingestion.ipynb                  # Bronze -> Silver -> Gold Delta pipeline
 │
-├── TRAI Dashboard/ & IBM Customer Churn Analysis/ # Companion Databricks Lakeview Dashboards
-├── app.py & modules/                              # Companion Python Analytical Explorer
+├── TRAI Dashboard/ & IBM Customer Churn Analysis/ # Databricks Lakeview Dashboards
 ├── tests/test_platform.py                         # Automated verification test suite
 └── README.md                                      # Main project repository documentation
 ```
