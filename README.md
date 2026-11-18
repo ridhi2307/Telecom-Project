@@ -208,7 +208,7 @@ Telecom-Project/
 pip install -r requirements.txt
 python -m unittest tests/test_platform.py
 ```
-*Result: `Ran 7 tests in ~0.7s ... OK`*
+*Result: `Ran 6 tests in ~0.3s ... OK`*
 
 ### Step 2: Open SQL Scripts in Databricks or SQL Client
 Execute scripts in `sql/` in sequence:
