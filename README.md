@@ -9,13 +9,13 @@
 
 ---
 
-## 1. Project Overview & Student Authors
+## 1. Project Overview 
 
 **TelecomNexus** is an enterprise Big Data Engineering, SQL Analytics, and Business Intelligence project developed as a college capstone submission. 
 
 The project bridges **macro-level Indian telecom regulatory dynamics (TRAI)** with **micro-level customer retention benchmarking (IBM Telco)** by implementing a **Medallion Lakehouse Architecture (Bronze → Silver → Gold)** connected to an **interactive Power BI dashboard**.
 
-### Student Authors : Ridhima Singh, Priya Bora, Ifza Akhtar, Garima Johar
+---
 
 ## 2. The One Rule Everyone Must Remember
 
@@ -225,3 +225,5 @@ Execute scripts in `sql/` in sequence:
 4. Test slicers to observe interactive cross-filtering.
 
 ---
+
+### Student Authors : Ridhima Singh, Priya Bora, Ifza Akhtar, Garima Johar
