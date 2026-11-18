@@ -15,21 +15,10 @@
 
 The project bridges **macro-level Indian telecom regulatory dynamics (TRAI)** with **micro-level customer retention benchmarking (IBM Telco)** by implementing a **Medallion Lakehouse Architecture (Bronze → Silver → Gold)** connected to an **interactive Power BI dashboard**.
 
-### Student Authors & Member Ownership
-*Project Snapshot: 16 November 2026 | Submission Deadline: 20 November 2026*
-
-| Student Author | Team Role | Core Ownership & Responsibilities as per Implementation Guide |
-| :--- | :--- | :--- |
-| **Ridhima Singh** | **Member 1** — Data Acquisition & Extraction | Source mining, PDF and Excel document parsing, Bronze CSV handover, raw-to-Bronze checks, data dictionaries, and `metadata/dim_lsa.csv`. |
-| **Priya Bora** | **Member 2** — Databricks, PySpark & Delta Lake | Spark ingestion, Bronze Delta tables, Silver cleansing, canonical LSA joins, Gold analytical tables construction, pipeline validation, and execution order. |
-| **Ifza Akhtar** | **Member 3** — SQL Analytics, KPIs & Power BI | Confirmation of Gold schemas and grain, authoring and testing SQL queries for KPIs and validation, master KPI dictionary, Power BI data model & DAX, 4-page Power BI dashboard, and SQL-to-visual reconciliation. |
-| **Garima Johar** | **Member 4** — IBM Churn Modeling & Integration | Feature engineering, data leakage prevention, train/test ML modeling, precision/recall/ROC-AUC evaluation, and final integration. |
-
----
+### Student Authors : Ridhima Singh, Priya Bora, Ifza Akhtar, Garima Johar
 
 ## 2. The One Rule Everyone Must Remember
 
-> [!IMPORTANT]
 > **TRAI India industry analytics and IBM US customer-churn analytics must remain strictly separate.**  
 > - **TRAI = India, aggregated telecom indicators.** Typical grain: Operator × LSA, service area, national time series.  
 > - **IBM Telco = US, fictional/customer-level churn benchmark.** Typical grain: One record per customer.  
@@ -174,20 +163,20 @@ TRAI Unweighted Avg ARPU = AVERAGE('workspace_gold_trai_lsa_switching_usage_cont
 
 ```text
 Telecom-Project/
-├── sql/                                           # Member 3 SQL Scripts
+├── sql/                                           # SQL Scripts
 │   ├── 01_trai_quality_checks.sql                 # Data quality, grain & null checks
 │   ├── 02_trai_kpis.sql                           # TRAI headline KPIs & chart queries
 │   ├── 03_ibm_churn_kpis.sql                      # IBM retention KPIs & segment queries
 │   └── 04_dashboard_validation.sql                # SQL-to-Power BI reconciliation controls
 │
-├── powerbi/                                       # Member 3 Power BI Assets & Guides
+├── powerbi/                                       # Power BI Assets & Guides
 │   ├── README_Member3.md                          # Power BI setup, 4 report pages & validation
 │   ├── powerbi_data_model_and_dax.md              # Complete DAX measures & Power Query M-code
 │   ├── export_gold_for_powerbi.py                 # Automated Gold CSV exporter for Power BI
 │   ├── data/                                      # Cleaned Gold CSVs for Power BI ingestion
 │   └── screenshots/                               # Dashboard screenshots & validation evidence
 │
-├── docs/                                          # Member 3 Documentation
+├── docs/                                          
 │   ├── KPI_Dictionary_Member3.md                  # Master KPI dictionary (formulas & grains)
 │   └── dashboard_data_dictionary.md               # Field mapping & data types
 │
@@ -203,7 +192,7 @@ Telecom-Project/
 │   ├── trai_subscribers/                          # 7 subscriber CSVs
 │   └── trai_usage/                                # 2 usage CSVs
 │
-├── notebooks/                                     # Member 2 PySpark Pipelines
+├── notebooks/                                     # PySpark Pipelines
 │   └── 01_bronze_ingestion.ipynb                  # Bronze -> Silver -> Gold Delta pipeline
 │
 ├── TRAI Dashboard/ & IBM Customer Churn Analysis/ # Companion Databricks Lakeview Dashboards
@@ -214,34 +203,7 @@ Telecom-Project/
 
 ---
 
-## 5. Viva Preparation: Questions & Verified Answers
-
-*Directly aligned with Section 14 of the Member 3 Implementation Guide:*
-
-#### Q1: What was your specific responsibility as Member 3?
-> **Answer:** *"My responsibility was to define, calculate, and document business KPIs using ANSI SQL from the Databricks Gold layer, and then build and validate a 4-page interactive Power BI dashboard connected to Gold. I also authored the SQL reconciliation test suite to verify that every Power BI card matches independent SQL control queries."*
-
-#### Q2: Why must the Power BI dashboard connect to the Gold layer rather than Bronze or raw CSVs?
-> **Answer:** *"Bronze contains raw, unstandardized data with format discrepancies and inconsistent LSA keys. Silver cleans and standardizes the data. Gold contains analytics-ready, business-oriented aggregations with validated business keys, which prevents double counting and guarantees report performance."*
-
-#### Q3: Why are TRAI and IBM datasets displayed on completely separate pages?
-> **Answer:** *"They represent fundamentally different geographies and grains. TRAI is macro-level Indian telecom regulatory data aggregated at the circle (LSA) and operator level. IBM Telco is a customer-level retention benchmark from California. Merging them would create an invalid join and incorrectly suggest that IBM churn rates represent Indian consumers."*
-
-#### Q4: What is the critical distinction between MNP porting requests and customer churn?
-> **Answer:** *"MNP measures portability requests submitted by subscribers in a service area. A completed switch is churn for the donor operator, but the TRAI request dataset does not identify which operator lost or gained the customer, nor does it confirm whether every request was completed. Therefore, MNP requests cannot be labeled as operator-specific churn."*
-
-#### Q5: Why can't missing values in the TRAI QoS dataset be replaced with zero?
-> **Answer:** *"Missing means unavailable or not applicable, whereas zero is a measured quantitative value. For example, Reliance Jio has missing values for metric_08 (Circuit Switched Drop Call Rate) because Jio operates an all-IP 4G/5G network with no legacy 2G/3G circuit-switched infrastructure. Replacing missing values with zero would distort comparisons and falsely indicate a perfect 0% drop call rate."*
-
-#### Q6: What is the difference between an unweighted and weighted average for ARPU?
-> **Answer:** *"Averaging the 22 circle ARPU values directly produces an unweighted service-area mean (₹ 187.95). A true national ARPU requires weighting each circle's ARPU by its subscriber population. We explicitly labeled our metric as an unweighted service-area average to maintain academic honesty."*
-
-#### Q7: How did you validate that your Power BI dashboard numbers are accurate?
-> **Answer:** *"I authored `sql/04_dashboard_validation.sql` and reconciled every headline card against SQL queries. For example, I verified that selecting 'Month-to-month' on the Contract slicer in Power BI dynamically matched the SQL control: 3,875 customers, 1,655 churned, and 42.71% churn rate."*
-
----
-
-## 6. How to Run & Validate Locally
+## 5. How to Run & Validate Locally
 
 ### Step 1: Install Dependencies & Run Verification
 ```powershell
@@ -264,16 +226,3 @@ Execute scripts in `sql/` in sequence:
 4. Test slicers to observe interactive cross-filtering.
 
 ---
-
-## 7. Submission Checklist (Member 3 Handover)
-
-- [x] Gold table inventory and KPI dictionary (`docs/KPI_Dictionary_Member3.md`) complete.
-- [x] 4 SQL scripts authored, tested, and committed in `sql/`.
-- [x] TRAI and IBM analysis kept strictly separate and labeled correctly.
-- [x] Power BI DAX repository (`powerbi/powerbi_data_model_and_dax.md`) complete.
-- [x] Power BI 4-page report specifications documented in `powerbi/README_Member3.md`.
-- [x] QoS missing values documented as source N/As (not zeros).
-- [x] MNP labeled as porting requests, not operator churn.
-- [x] Dashboard KPI values reconciled with SQL results.
-- [x] All 4 student team members (**Ridhima Singh**, **Priya Bora**, **Ifza Akhtar**, **Garima Johar**) credited in README.
-- [x] Changes committed and synchronized to GitHub repository.
