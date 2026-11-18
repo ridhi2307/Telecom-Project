@@ -1,0 +1,324 @@
+{
+  "datasets": [
+    {
+      "name": "ds_ibm_kpis",
+      "displayName": "IBM Customer Retention Overview",
+      "queryLines": [
+        "SELECT\n",
+        "    COUNT(*) AS total_customers,\n",
+        "    SUM(Churn_Value) AS churned_customers,\n",
+        "    COUNT(*) - SUM(Churn_Value) AS retained_customers,\n",
+        "    ROUND(CAST(SUM(Churn_Value) AS DOUBLE) / COUNT(*) * 100, 2) AS churn_rate_percent,\n",
+        "    ROUND(AVG(Monthly_Charges), 2) AS avg_monthly_charges,\n",
+        "    ROUND(AVG(Tenure_Months), 1) AS avg_tenure_months\n",
+        "FROM workspace.silver.ibm_telco_customer_churn;"
+      ]
+    },
+    {
+      "name": "ds_churn_contract",
+      "displayName": "Churn by Contract Type",
+      "queryLines": [
+        "SELECT\n",
+        "    Contract,\n",
+        "    COUNT(*) AS total_customers,\n",
+        "    SUM(Churn_Value) AS churned_customers,\n",
+        "    ROUND(CAST(SUM(Churn_Value) AS DOUBLE) / COUNT(*) * 100, 2) AS churn_rate_percent\n",
+        "FROM workspace.silver.ibm_telco_customer_churn\n",
+        "GROUP BY Contract\n",
+        "ORDER BY churn_rate_percent DESC;"
+      ]
+    },
+    {
+      "name": "ds_churn_payment",
+      "displayName": "Churn by Payment Method",
+      "queryLines": [
+        "SELECT\n",
+        "    Payment Method AS payment_method,\n",
+        "    COUNT(*) AS total_customers,\n",
+        "    SUM(Churn_Value) AS churned_customers,\n",
+        "    ROUND(CAST(SUM(Churn_Value) AS DOUBLE) / COUNT(*) * 100, 2) AS churn_rate_percent\n",
+        "FROM workspace.silver.ibm_telco_customer_churn\n",
+        "GROUP BY Payment Method\n",
+        "ORDER BY churn_rate_percent DESC;"
+      ]
+    },
+    {
+      "name": "ds_churn_service",
+      "displayName": "Churn by Internet Service",
+      "queryLines": [
+        "SELECT\n",
+        "    Internet Service AS internet_service,\n",
+        "    COUNT(*) AS total_customers,\n",
+        "    SUM(Churn_Value) AS churned_customers,\n",
+        "    ROUND(CAST(SUM(Churn_Value) AS DOUBLE) / COUNT(*) * 100, 2) AS churn_rate_percent\n",
+        "FROM workspace.silver.ibm_telco_customer_churn\n",
+        "GROUP BY Internet Service\n",
+        "ORDER BY churn_rate_percent DESC;"
+      ]
+    },
+    {
+      "name": "ds_churn_tenure",
+      "displayName": "Churn by Customer Tenure Band",
+      "queryLines": [
+        "SELECT\n",
+        "    tenure_band,\n",
+        "    COUNT(*) AS total_customers,\n",
+        "    SUM(Churn_Value) AS churned_customers,\n",
+        "    ROUND(CAST(SUM(Churn_Value) AS DOUBLE) / COUNT(*) * 100, 2) AS churn_rate_percent\n",
+        "FROM (\n",
+        "    SELECT\n",
+        "        CASE\n",
+        "            WHEN Tenure_Months <= 12 THEN '0-12 months'\n",
+        "            WHEN Tenure_Months <= 24 THEN '13-24 months'\n",
+        "            WHEN Tenure_Months <= 48 THEN '25-48 months'\n",
+        "            ELSE '49+ months'\n",
+        "        END AS tenure_band,\n",
+        "        Churn_Value\n",
+        "    FROM workspace.silver.ibm_telco_customer_churn\n",
+        ")\n",
+        "GROUP BY tenure_band\n",
+        "ORDER BY churn_rate_percent DESC;"
+      ]
+    },
+    {
+      "name": "ds_churn_reasons",
+      "displayName": "Top Customer Churn Reasons",
+      "queryLines": [
+        "SELECT\n",
+        "    Churn Reason AS churn_reason,\n",
+        "    COUNT(*) AS customer_count\n",
+        "FROM workspace.silver.ibm_telco_customer_churn\n",
+        "WHERE Churn_Value = 1\n",
+        "GROUP BY Churn Reason\n",
+        "ORDER BY customer_count DESC\n",
+        "LIMIT 10;"
+      ]
+    },
+    {
+      "name": "ds_charges_analysis",
+      "displayName": "Monthly Charges Impact Analysis",
+      "queryLines": [
+        "SELECT\n",
+        "    Churn Label AS churn_label,\n",
+        "    COUNT(*) AS customer_count,\n",
+        "    ROUND(AVG(Monthly_Charges), 2) AS avg_monthly_charges,\n",
+        "    ROUND(MIN(Monthly_Charges), 2) AS min_monthly_charges,\n",
+        "    ROUND(MAX(Monthly_Charges), 2) AS max_monthly_charges,\n",
+        "    ROUND(SUM(Monthly_Charges), 2) AS total_monthly_revenue\n",
+        "FROM workspace.silver.ibm_telco_customer_churn\n",
+        "GROUP BY Churn Label;"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "page_ibm_churn",
+      "displayName": "IBM Customer Churn Analysis",
+      "layout": [
+        {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 4
+          },
+          "widget": {
+            "name": "w_ibm_kpis",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_ibm_kpis"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Executive Churn Key Performance Indicators (Total Base: 7,043)"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_churn_contract",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_churn_contract"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Churn Rate by Contract Type (Month-to-Month Risk)"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 6,
+            "y": 4,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_churn_payment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_churn_payment"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Churn Rate by Payment Method (Electronic Check Exposure)"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 0,
+            "y": 10,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_churn_service",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_churn_service"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Churn Rate by Internet Service (Fiber Optic vs DSL)"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 6,
+            "y": 10,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_churn_tenure",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_churn_tenure"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Churn Rate by Tenure Cohort (Early Life Churn 0-12 Mo)"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 0,
+            "y": 16,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_charges_analysis",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_charges_analysis"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Monthly Recurring Revenue Impact: Retained vs Churned"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 6,
+            "y": 16,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_churn_reasons",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_churn_reasons"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Top 10 Recorded Reasons for Customer Departure"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

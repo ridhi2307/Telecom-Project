@@ -1,0 +1,312 @@
+{
+  "datasets": [
+    {
+      "name": "ds_trai_overview",
+      "displayName": "TRAI Industry Overview Metrics",
+      "queryLines": [
+        "SELECT\n",
+        "    COUNT(DISTINCT canonical_lsa) AS total_lsa,\n",
+        "    COUNT(DISTINCT zone) AS total_zones,\n",
+        "    ROUND(SUM(may_2026_porting_requests_millions), 2) AS may_porting_requests_m,\n",
+        "    ROUND(SUM(june_2026_porting_requests_millions), 2) AS june_porting_requests_m,\n",
+        "    ROUND(AVG(prepaid_percentage), 2) AS avg_prepaid_percentage,\n",
+        "    ROUND(AVG(arpu_inr_per_month), 2) AS avg_arpu_inr\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context;"
+      ]
+    },
+    {
+      "name": "ds_porting_lsa",
+      "displayName": "Porting Requests by LSA",
+      "queryLines": [
+        "SELECT\n",
+        "    canonical_lsa,\n",
+        "    zone,\n",
+        "    category,\n",
+        "    ROUND(may_2026_porting_requests_millions, 3) AS may_requests_m,\n",
+        "    ROUND(june_2026_porting_requests_millions, 3) AS june_requests_m,\n",
+        "    ROUND(june_2026_porting_requests_millions - may_2026_porting_requests_millions, 3) AS net_change_m\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context\n",
+        "ORDER BY june_requests_m DESC;"
+      ]
+    },
+    {
+      "name": "ds_porting_zone",
+      "displayName": "Porting Requests by Zone",
+      "queryLines": [
+        "SELECT\n",
+        "    zone,\n",
+        "    ROUND(SUM(may_2026_porting_requests_millions), 2) AS may_requests_m,\n",
+        "    ROUND(SUM(june_2026_porting_requests_millions), 2) AS june_requests_m\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context\n",
+        "GROUP BY zone\n",
+        "ORDER BY june_requests_m DESC;"
+      ]
+    },
+    {
+      "name": "ds_arpu_zone",
+      "displayName": "Average ARPU by Zone",
+      "queryLines": [
+        "SELECT\n",
+        "    zone,\n",
+        "    ROUND(AVG(arpu_inr_per_month), 2) AS avg_arpu_inr\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context\n",
+        "GROUP BY zone\n",
+        "ORDER BY avg_arpu_inr DESC;"
+      ]
+    },
+    {
+      "name": "ds_usage_mou",
+      "displayName": "Minutes of Usage (MOU) by LSA",
+      "queryLines": [
+        "SELECT\n",
+        "    canonical_lsa,\n",
+        "    ROUND(AVG(outgoing_mou_per_month), 1) AS outgoing_mou,\n",
+        "    ROUND(AVG(incoming_mou_per_month), 1) AS incoming_mou,\n",
+        "    ROUND(AVG(total_mou_per_month), 1) AS total_mou\n",
+        "FROM workspace.gold.trai_lsa_switching_usage_context\n",
+        "GROUP BY canonical_lsa\n",
+        "ORDER BY total_mou DESC;"
+      ]
+    },
+    {
+      "name": "ds_national_trends",
+      "displayName": "National Wireless Trends",
+      "queryLines": [
+        "SELECT\n",
+        "    reporting_period,\n",
+        "    arpu_inr_per_month,\n",
+        "    revenue_realization_per_gb_inr,\n",
+        "    mou_per_subscriber\n",
+        "FROM workspace.gold.trai_national_wireless_usage_trends\n",
+        "ORDER BY reporting_period;"
+      ]
+    },
+    {
+      "name": "ds_qos_benchmark",
+      "displayName": "QoS Operator Benchmark",
+      "queryLines": [
+        "SELECT\n",
+        "    operator,\n",
+        "    ROUND(AVG(metric_02), 2) AS avg_downtime_pct,\n",
+        "    ROUND(AVG(metric_05), 2) AS call_setup_success_intra_pct,\n",
+        "    ROUND(AVG(metric_06), 2) AS call_setup_success_inter_pct,\n",
+        "    ROUND(AVG(metric_12), 2) AS avg_latency_ms,\n",
+        "    ROUND(AVG(metric_13), 2) AS packet_drop_rate_pct\n",
+        "FROM workspace.silver.trai_qos\n",
+        "GROUP BY operator\n",
+        "ORDER BY operator;"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "page_trai_analytics",
+      "displayName": "TRAI Telecom Industry Analytics",
+      "layout": [
+        {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 4
+          },
+          "widget": {
+            "name": "w_trai_kpi_overview",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_trai_overview"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Industry Overview & National Key Metrics (June 2026)"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 7,
+            "height": 7
+          },
+          "widget": {
+            "name": "w_porting_lsa_chart",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_porting_lsa"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Porting Requests & MoM Delta by Licensed Service Area (LSA)"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 7,
+            "y": 4,
+            "width": 5,
+            "height": 7
+          },
+          "widget": {
+            "name": "w_porting_zone_chart",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_porting_zone"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Porting Volume Comparison by Geographic Zone"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 0,
+            "y": 11,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_arpu_zone_chart",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_arpu_zone"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Average ARPU (\u20b9) by Zone"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 6,
+            "y": 11,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_usage_mou_chart",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_usage_mou"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Minutes of Usage (MOU) by LSA"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 0,
+            "y": 17,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_national_trends_chart",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_national_trends"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "5-Quarter National Wireless Usage & Realization Trends"
+                }
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 6,
+            "y": 17,
+            "width": 6,
+            "height": 6
+          },
+          "widget": {
+            "name": "w_qos_benchmark_chart",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_qos_benchmark"
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Quality of Service (QoS) Parameters by Operator"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

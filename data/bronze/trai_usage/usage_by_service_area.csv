@@ -1,0 +1,23 @@
+service_area,category,prepaid_percentage,arpu_inr_per_month,outgoing_sms_per_month,outgoing_mou_per_month,incoming_mou_per_month,total_mou_per_month,reporting_period
+AP,category-A,87.38%,225,6,484,479,963,April-June 2026
+Gujarat,category-A,82.84%,196,12,394,387,781,April-June 2026
+Karnataka,category-A,71.87%,183,7,415,412,827,April-June 2026
+MH,category-A,84.19%,201,11,414,405,819,April-June 2026
+TN (incl. Chennai),category-A,85.41%,225,5,451,451,903,April-June 2026
+Haryana,category-B,85.87%,166,6,441,432,873,April-June 2026
+Kerala,category-B,92.86%,219,4,334,340,674,April-June 2026
+MP,category-B,89.66%,180,9,469,466,935,April-June 2026
+Punjab,category-B,88.64%,197,5,408,397,805,April-June 2026
+Rajasthan,category-B,90.75%,193,8,474,482,956,April-June 2026
+UP(E),category-B,91.47%,165,7,571,581,1152,April-June 2026
+UP(W),category-B,89.81%,186,6,476,501,977,April-June 2026
+WB,category-B,97.97%,206,30,537,543,1080,April-June 2026
+Assam,category-C,87.39%,192,17,506,511,1017,April-June 2026
+Bihar,category-C,87.91%,174,7,592,613,1205,April-June 2026
+HP,category-C,92.92%,198,6,499,501,1000,April-June 2026
+J&K,category-C,30.61%,199,13,569,554,1123,April-June 2026
+NE,category-C,92.58%,215,22,488,494,982,April-June 2026
+Odisha,category-C,87.84%,182,12,543,554,1098,April-June 2026
+Kolkata,Metro,86.77%,151,6,419,411,830,April-June 2026
+Delhi,Metro,52.51%,128,4,367,324,691,April-June 2026
+Mumbai,Metro,63.60%,154,5,357,338,694,April-June 2026

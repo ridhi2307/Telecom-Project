@@ -1,0 +1,48 @@
+file_name,column_name,description,data_type,unit
+circle_wise_growth_rates.csv,report_month,Reporting month,string,Month
+circle_wise_growth_rates.csv,circle,Telecom service area or circle,string,Text
+circle_wise_growth_rates.csv,wireline_monthly_growth_pct,Monthly wireline subscriber growth rate,float,Percentage
+circle_wise_growth_rates.csv,wireless_monthly_growth_pct,Monthly wireless subscriber growth rate,float,Percentage
+circle_wise_growth_rates.csv,wireline_yearly_growth_pct,Yearly wireline subscriber growth rate,float,Percentage
+circle_wise_growth_rates.csv,wireless_yearly_growth_pct,Yearly wireless subscriber growth rate,float,Percentage
+circle_wise_growth_rates.csv,source_file,Original source PDF filename,string,Text
+circle_wise_growth_rates.csv,source_page,Original PDF page reference,integer,Page
+circle_wise_net_additions.csv,report_month,Reporting month,string,Month
+circle_wise_net_additions.csv,circle,Telecom service area or circle,string,Text
+circle_wise_net_additions.csv,wireline_net_additions,Net additions in wireline subscribers,number,Subscribers
+circle_wise_net_additions.csv,wireless_net_additions,Net additions in wireless subscribers,number,Subscribers
+circle_wise_net_additions.csv,wireline_subscriber_base,Wireline subscriber base,number,Subscribers
+circle_wise_net_additions.csv,wireless_subscriber_base,Wireless subscriber base,number,Subscribers
+circle_wise_net_additions.csv,source_file,Original source PDF filename,string,Text
+circle_wise_net_additions.csv,source_page,Original PDF page reference,integer,Page
+fixed_wired_broadband.csv,report_month,Reporting month,string,Month
+fixed_wired_broadband.csv,broadband_type,Type of fixed broadband,string,Text
+fixed_wired_broadband.csv,rank,Provider ranking in source table,integer,Rank
+fixed_wired_broadband.csv,service_provider,Telecom service provider,string,Text
+fixed_wired_broadband.csv,subscriber_base_million,Subscriber base in millions,float,Million subscribers
+fixed_wired_broadband.csv,source_file,Original source PDF filename,string,Text
+fixed_wired_broadband.csv,source_page,Original PDF page reference,integer,Page
+mnp_service_area_status.csv,report_month,Reporting month,string,Month
+mnp_service_area_status.csv,zone,Geographical zone,string,Text
+mnp_service_area_status.csv,service_area,Telecom service area,string,Text
+mnp_service_area_status.csv,may_2026_porting_requests_millions,Number of porting requests in May 2026,float,Million requests
+mnp_service_area_status.csv,june_2026_porting_requests_millions,Number of porting requests in June 2026,float,Million requests
+mnp_service_area_status.csv,source_file,Original source PDF filename,string,Text
+mnp_service_area_status.csv,source_page,Original PDF page reference,integer,Page
+telephone_subscriber_base.csv,report_month,Reporting month,string,Month
+telephone_subscriber_base.csv,category,Subscriber category,string,Text
+telephone_subscriber_base.csv,subscriber_base_million,Subscriber base in millions,float,Million subscribers
+telephone_subscriber_base.csv,source_file,Original source PDF filename,string,Text
+telephone_subscriber_base.csv,source_page,Original PDF page reference,integer,Page
+wireless_broadband.csv,report_month,Reporting month,string,Month
+wireless_broadband.csv,broadband_type,Type of wireless broadband,string,Text
+wireless_broadband.csv,rank,Provider ranking in source table,integer,Rank
+wireless_broadband.csv,service_provider,Telecom service provider,string,Text
+wireless_broadband.csv,subscriber_base_million,Subscriber base in millions,float,Million subscribers
+wireless_broadband.csv,source_file,Original source PDF filename,string,Text
+wireless_broadband.csv,source_page,Original PDF page reference,integer,Page
+wireless_mobile_subscribers.csv,report_month,Reporting month,string,Month
+wireless_mobile_subscribers.csv,category,Wireless subscriber category,string,Text
+wireless_mobile_subscribers.csv,subscriber_base_million,Subscriber base in millions,float,Million subscribers
+wireless_mobile_subscribers.csv,source_file,Original source PDF filename,string,Text
+wireless_mobile_subscribers.csv,source_page,Original PDF page reference,integer,Page
