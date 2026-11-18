@@ -27,7 +27,7 @@ The project bridges **macro-level Indian telecom regulatory dynamics (TRAI)** wi
 
 ---
 
-## 3. Step-by-Step Project Walkthrough: What Was Done (Member 3 Focus)
+## 3. Step-by-Step Project Walkthrough:
 
 ```mermaid
 flowchart TD
@@ -63,7 +63,7 @@ flowchart TD
 
 ---
 
-### Step 3: Build Master KPI Dictionary (`docs/KPI_Dictionary_Member3.md`)
+### Step 3: Build Master KPI Dictionary
 - Formulated exact business questions, numerators, denominators, units, grains, and null treatments for every headline metric before building any visual.
 - **Unweighted vs. Weighted ARPU:** Documented that averaging 22 LSA ARPU values yields an **unweighted service-area mean** (`₹ 187.95`), not a subscriber-weighted national figure, and labeled it explicitly.
 - **Churn Denominator:** Enforced `Distinct CustomerID` denominator for IBM churn rate (`26.54%`).
@@ -93,8 +93,7 @@ flowchart TD
 
 ---
 
-### Step 6: Build the 4-Page Power BI Report & Master DAX Repository
-Constructed the report following the specifications in the Member 3 Guide:
+### Step 6: Build the 4-Page Power BI Report & Master DAX Repository:
 
 #### Page 1: TRAI Industry Overview (Indian Porting Activity)
 - **KPI Cards:** June MNP Total (`14.79 M`), May MNP Total (`14.47 M`), MoM Change (`+0.32 M`, `+2.21%`), Unweighted ARPU (`₹ 187.95`).
