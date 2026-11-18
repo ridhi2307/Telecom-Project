@@ -9,20 +9,20 @@
 
 ---
 
-## 1. Project Overview & Team Structure
+## 1. Project Overview & Student Authors
 
-**TelecomNexus** is an enterprise data engineering, SQL analytics, and Business Intelligence platform built for a college capstone project. 
+**TelecomNexus** is an enterprise Big Data Engineering, SQL Analytics, and Business Intelligence project developed as a college capstone submission. 
 
-The platform bridges **macro-level Indian telecom regulatory dynamics (TRAI)** with **micro-level customer retention benchmarking (IBM Telco)** using a **Medallion Lakehouse Architecture (Bronze → Silver → Gold)** connected to an **interactive Power BI dashboard**.
+The project bridges **macro-level Indian telecom regulatory dynamics (TRAI)** with **micro-level customer retention benchmarking (IBM Telco)** by implementing a **Medallion Lakehouse Architecture (Bronze → Silver → Gold)** connected to an **interactive Power BI dashboard**.
 
-### Project Authors & Team Responsibilities
-*Team Members (Project Snapshot: 16 November 2026 | Deadline: 20 November 2026)*
+### Student Authors & Member Ownership
+*Project Snapshot: 16 November 2026 | Submission Deadline: 20 November 2026*
 
-| Team Member | Role | Core Responsibilities as per Implementation Guide |
+| Student Author | Team Role | Core Ownership & Responsibilities as per Implementation Guide |
 | :--- | :--- | :--- |
-| **Ridhima Singh** | **Member 1** — Data Acquisition & Extraction | Source mining, PDF/Excel parsing, Bronze CSV handover, raw-to-Bronze checks, dictionaries, and `metadata/dim_lsa.csv`. |
-| **Priya Bora** | **Member 2** — Databricks, PySpark & Delta Lake | Spark ingestion, Bronze Delta tables, Silver cleansing & canonical LSA joins, Gold analytical tables construction, pipeline validation. |
-| **Ifza Akhtar** | **Member 3** — SQL Analytics, KPIs & Power BI | Confirmation of Gold schemas, SQL queries for KPIs and validation, KPI dictionary, Power BI data model & DAX, 4-page dashboard, SQL-to-visual reconciliation. |
+| **Ridhima Singh** | **Member 1** — Data Acquisition & Extraction | Source mining, PDF and Excel document parsing, Bronze CSV handover, raw-to-Bronze checks, data dictionaries, and `metadata/dim_lsa.csv`. |
+| **Priya Bora** | **Member 2** — Databricks, PySpark & Delta Lake | Spark ingestion, Bronze Delta tables, Silver cleansing, canonical LSA joins, Gold analytical tables construction, pipeline validation, and execution order. |
+| **Ifza Akhtar** | **Member 3** — SQL Analytics, KPIs & Power BI | Confirmation of Gold schemas and grain, authoring and testing SQL queries for KPIs and validation, master KPI dictionary, Power BI data model & DAX, 4-page Power BI dashboard, and SQL-to-visual reconciliation. |
 | **Garima Johar** | **Member 4** — IBM Churn Modeling & Integration | Feature engineering, data leakage prevention, train/test ML modeling, precision/recall/ROC-AUC evaluation, and final integration. |
 
 ---
@@ -34,7 +34,7 @@ The platform bridges **macro-level Indian telecom regulatory dynamics (TRAI)** w
 > - **TRAI = India, aggregated telecom indicators.** Typical grain: Operator × LSA, service area, national time series.  
 > - **IBM Telco = US, fictional/customer-level churn benchmark.** Typical grain: One record per customer.  
 > **Never merge IBM customer records with TRAI metrics or claim that the IBM churn rate describes Indian customers.**  
-> Mobile Number Portability (MNP) porting requests represent switching activity, not confirmed operator churn.
+> Mobile Number Portability (MNP) porting requests represent consumer switching inquiries, **not** confirmed customer churn.
 
 ---
 
@@ -102,6 +102,7 @@ flowchart TD
   - HTTP Path: `/sql/1.0/warehouses/xxxxxxxxxxxxxxxx`
 - Selected **Import mode** for maximum responsiveness during presentation.
 - Kept TRAI and IBM data models strictly separate (no cross-domain relationships).
+- Provided local validated CSV exports in `powerbi/data/` via `powerbi/export_gold_for_powerbi.py` for offline evaluation.
 
 ---
 
@@ -175,8 +176,8 @@ TRAI Unweighted Avg ARPU = AVERAGE('workspace_gold_trai_lsa_switching_usage_cont
 - Organized the repository according to the Member 3 suggested structure:
   - `sql/`: 4 standalone SQL scripts.
   - `docs/`: Master KPI dictionary and dashboard data dictionary.
-  - `powerbi/`: Step-by-step setup guide, M-code, and DAX repository.
-- Initialized Git, set default branch `main`, committed all assets under author identity, and pushed to `https://github.com/ridhi2307/Telecom-Project.git`.
+  - `powerbi/`: Step-by-step setup guide, M-code, DAX repository, and data export script.
+- Synchronized with GitHub repository: `https://github.com/ridhi2307/Telecom-Project.git`.
 
 ---
 
@@ -193,7 +194,9 @@ Telecom-Project/
 ├── powerbi/                                       # Member 3 Power BI Assets & Guides
 │   ├── README_Member3.md                          # Power BI setup, 4 report pages & validation
 │   ├── powerbi_data_model_and_dax.md              # Complete DAX measures & Power Query M-code
-│   └── TelecomNexus_Member3_Dashboard.pbix        # Power BI report file (local/template)
+│   ├── export_gold_for_powerbi.py                 # Automated Gold CSV exporter for Power BI
+│   ├── data/                                      # Cleaned Gold CSVs for Power BI ingestion
+│   └── screenshots/                               # Dashboard screenshots & validation evidence
 │
 ├── docs/                                          # Member 3 Documentation
 │   ├── KPI_Dictionary_Member3.md                  # Master KPI dictionary (formulas & grains)
@@ -215,7 +218,7 @@ Telecom-Project/
 │   └── 01_bronze_ingestion.ipynb                  # Bronze -> Silver -> Gold Delta pipeline
 │
 ├── TRAI Dashboard/ & IBM Customer Churn Analysis/ # Companion Databricks Lakeview Dashboards
-├── app.py & modules/                              # Companion Python / Streamlit App
+├── app.py & modules/                              # Companion Python Analytical Explorer
 ├── tests/test_platform.py                         # Automated verification test suite
 └── README.md                                      # Main project repository documentation
 ```
@@ -266,9 +269,10 @@ Execute scripts in `sql/` in sequence:
 4. `sql/04_dashboard_validation.sql`
 
 ### Step 3: Open Power BI Desktop
-1. Open `powerbi/TelecomNexus_Member3_Dashboard.pbix` (or create a new report following `powerbi/README_Member3.md`).
-2. Verify the 4 pages: **TRAI Industry Overview**, **TRAI Usage & Subscribers**, **TRAI Network Quality**, and **IBM Customer Churn**.
-3. Check slicers to observe interactive cross-filtering.
+1. Open **Power BI Desktop**.
+2. Connect to Databricks Gold tables using the instructions in `powerbi/README_Member3.md` (or import local CSVs from `powerbi/data/`).
+3. Check the 4 pages: **TRAI Industry Overview**, **TRAI Usage & Subscribers**, **TRAI Network Quality**, and **IBM Customer Churn**.
+4. Test slicers to observe interactive cross-filtering.
 
 ---
 
@@ -282,5 +286,5 @@ Execute scripts in `sql/` in sequence:
 - [x] QoS missing values documented as source N/As (not zeros).
 - [x] MNP labeled as porting requests, not operator churn.
 - [x] Dashboard KPI values reconciled with SQL results.
-- [x] All 4 student team members credited in README.
+- [x] All 4 student team members (**Ridhima Singh**, **Priya Bora**, **Ifza Akhtar**, **Garima Johar**) credited in README.
 - [x] Changes committed and synchronized to GitHub repository.
