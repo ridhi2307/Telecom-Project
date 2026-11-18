@@ -49,8 +49,6 @@ flowchart TD
     S5 --> S6["Step 6: Build 4-Page Power BI Report & DAX"]
     S6 --> S7["Step 7: Slicers & Cross-Visual Interactions"]
     S7 --> S8["Step 8: Reconcile Power BI Against SQL Controls"]
-    S8 --> S9["Step 9: Documentation & GitHub Handover"]
-    S9 --> S10["Step 10: Viva Examination Preparation"]
 ```
 
 ---
@@ -169,15 +167,6 @@ TRAI Unweighted Avg ARPU = AVERAGE('workspace_gold_trai_lsa_switching_usage_cont
   - Verified that selecting `Month-to-month` on the Power BI slicer dynamically updates the KPI cards to **3,875 customers**, **1,655 churned**, and **42.71% churn rate**.
   - Verified that filtering to `Zone I` updates MNP porting to **7.96 M** across **11 circles**.
   - Verified that relationships did not multiply rows or inflate totals.
-
----
-
-### Step 9: Documentation & GitHub Handover
-- Organized the repository according to the Member 3 suggested structure:
-  - `sql/`: 4 standalone SQL scripts.
-  - `docs/`: Master KPI dictionary and dashboard data dictionary.
-  - `powerbi/`: Step-by-step setup guide, M-code, DAX repository, and data export script.
-- Synchronized with GitHub repository: `https://github.com/ridhi2307/Telecom-Project.git`.
 
 ---
 
