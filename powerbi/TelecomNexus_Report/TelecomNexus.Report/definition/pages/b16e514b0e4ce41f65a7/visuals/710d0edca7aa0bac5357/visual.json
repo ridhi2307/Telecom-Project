@@ -1,0 +1,159 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "710d0edca7aa0bac5357",
+  "position": {
+    "x": 16,
+    "y": 264,
+    "z": 9,
+    "height": 528,
+    "width": 696,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trai_lsa_switching_usage_context"
+                    }
+                  },
+                  "Property": "canonical_lsa"
+                }
+              },
+              "queryRef": "trai_lsa_switching_usage_context.canonical_lsa",
+              "nativeQueryRef": "canonical_lsa",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trai_lsa_switching_usage_context"
+                    }
+                  },
+                  "Property": "TRAI May MNP M"
+                }
+              },
+              "queryRef": "trai_lsa_switching_usage_context.TRAI May MNP M",
+              "nativeQueryRef": "TRAI May MNP M"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trai_lsa_switching_usage_context"
+                    }
+                  },
+                  "Property": "TRAI June MNP M"
+                }
+              },
+              "queryRef": "trai_lsa_switching_usage_context.TRAI June MNP M",
+              "nativeQueryRef": "TRAI June MNP M"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "trai_lsa_switching_usage_context"
+                  }
+                },
+                "Property": "TRAI June MNP M"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'May and June requests by service area (M)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#10283F'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

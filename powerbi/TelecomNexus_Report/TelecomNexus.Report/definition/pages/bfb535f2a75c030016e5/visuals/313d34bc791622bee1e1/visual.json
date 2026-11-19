@@ -1,0 +1,142 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "313d34bc791622bee1e1",
+  "position": {
+    "x": 16,
+    "y": 264,
+    "z": 9,
+    "height": 528,
+    "width": 696,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trai_lsa_switching_usage_context"
+                    }
+                  },
+                  "Property": "canonical_lsa"
+                }
+              },
+              "queryRef": "trai_lsa_switching_usage_context.canonical_lsa",
+              "nativeQueryRef": "canonical_lsa",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trai_lsa_switching_usage_context"
+                    }
+                  },
+                  "Property": "TRAI Outgoing MOU"
+                }
+              },
+              "queryRef": "trai_lsa_switching_usage_context.TRAI Outgoing MOU",
+              "nativeQueryRef": "TRAI Outgoing MOU"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trai_lsa_switching_usage_context"
+                    }
+                  },
+                  "Property": "TRAI Incoming MOU"
+                }
+              },
+              "queryRef": "trai_lsa_switching_usage_context.TRAI Incoming MOU",
+              "nativeQueryRef": "TRAI Incoming MOU"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mean outgoing and incoming minutes by service area'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#10283F'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

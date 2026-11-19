@@ -1,0 +1,974 @@
+{
+  "compatibilityLevel": 1606,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"trai_lsa_switching_usage_context\",\"trai_qos\",\"ibm_telco_customer_churn\",\"trai_national_wireless_usage_trends\",\"trai_wireless_broadband\",\"trai_fixed_wired_broadband\",\"DataFolder\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "DataFolder",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ],
+        "expression": "\"C:\\Users\\priya\\Desktop\\Telecom-Project-main\\Telecom-Project-main\\powerbi\\data\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "8c922cf5-1df1-4c3a-a122-30b90a2da1c2"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "LSAContextToQoS",
+        "fromColumn": "lsa",
+        "fromTable": "trai_qos",
+        "toColumn": "canonical_lsa",
+        "toTable": "trai_lsa_switching_usage_context"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "trai_lsa_switching_usage_context",
+        "columns": [
+          {
+            "name": "canonical_lsa",
+            "dataType": "string",
+            "lineageTag": "69018a6a-2af0-424a-9d6b-da468e5486bc",
+            "sourceColumn": "canonical_lsa",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "zone",
+            "dataType": "string",
+            "lineageTag": "c4687d12-e298-41fc-a8f7-948501ca290e",
+            "sourceColumn": "zone",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mnp_report_month",
+            "dataType": "string",
+            "lineageTag": "e7328baf-77e6-4006-8f78-64fea46bd7db",
+            "sourceColumn": "mnp_report_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "may_2026_porting_requests_millions",
+            "dataType": "double",
+            "lineageTag": "89753564-a39d-4a71-98b6-c0c779939df6",
+            "sourceColumn": "may_2026_porting_requests_millions",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "june_2026_porting_requests_millions",
+            "dataType": "double",
+            "lineageTag": "87d69040-d11e-458c-925c-9182ae5539ab",
+            "sourceColumn": "june_2026_porting_requests_millions",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "category",
+            "dataType": "string",
+            "lineageTag": "e6fb1ce5-49fd-4c99-b316-4dda9bb21411",
+            "sourceColumn": "category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "prepaid_percentage",
+            "dataType": "double",
+            "lineageTag": "e7c92798-aa64-4eb2-8571-7fd72e19fc24",
+            "sourceColumn": "prepaid_percentage",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "arpu_inr_per_month",
+            "dataType": "double",
+            "lineageTag": "c0dc1a23-2143-4b05-84fc-206d441b2c8e",
+            "sourceColumn": "arpu_inr_per_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "outgoing_sms_per_month",
+            "dataType": "double",
+            "lineageTag": "fe48a39c-e224-4543-ac8b-d3bc921c4dc8",
+            "sourceColumn": "outgoing_sms_per_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "outgoing_mou_per_month",
+            "dataType": "double",
+            "lineageTag": "fa8b6267-7957-41e2-abf2-75d7b5795758",
+            "sourceColumn": "outgoing_mou_per_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "incoming_mou_per_month",
+            "dataType": "double",
+            "lineageTag": "573d0938-b3b3-4b36-b93c-7b3da6d0bfee",
+            "sourceColumn": "incoming_mou_per_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "total_mou_per_month",
+            "dataType": "double",
+            "lineageTag": "2a1c4d08-a55d-44f9-ba3b-9b07e84e0c3b",
+            "sourceColumn": "total_mou_per_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "usage_reporting_period",
+            "dataType": "string",
+            "lineageTag": "e8d1658a-83b5-4369-a036-5230eeab1bd9",
+            "sourceColumn": "usage_reporting_period",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "7cffb7e4-47d9-4b6c-b838-20896e8d5f68",
+        "measures": [
+          {
+            "name": "TRAI May MNP M",
+            "expression": "SUM('trai_lsa_switching_usage_context'[may_2026_porting_requests_millions])",
+            "formatString": "#,0.00",
+            "lineageTag": "b27738ac-1ecd-42eb-b9b5-b82bcdccb457"
+          },
+          {
+            "name": "TRAI June MNP M",
+            "expression": "SUM('trai_lsa_switching_usage_context'[june_2026_porting_requests_millions])",
+            "formatString": "#,0.00",
+            "lineageTag": "cea8f348-283e-44b2-a8f3-b5af6059459b"
+          },
+          {
+            "name": "TRAI MNP Growth M",
+            "expression": "[TRAI June MNP M] - [TRAI May MNP M]",
+            "formatString": "#,0.00",
+            "lineageTag": "54f55326-462a-415a-9272-b86910f710e9"
+          },
+          {
+            "name": "TRAI MNP Growth Pct",
+            "expression": "DIVIDE([TRAI MNP Growth M], [TRAI May MNP M])",
+            "formatString": "0.00%",
+            "lineageTag": "3a2f3e94-8e5b-46ec-8e89-e4afedbd49b3"
+          },
+          {
+            "name": "TRAI Unweighted ARPU INR",
+            "expression": "AVERAGE('trai_lsa_switching_usage_context'[arpu_inr_per_month])",
+            "formatString": "\"₹\"#,0.00",
+            "lineageTag": "c7e3b8df-1eac-4489-97b6-1318f4633566"
+          },
+          {
+            "name": "TRAI Unweighted Prepaid Share",
+            "expression": "DIVIDE(AVERAGE('trai_lsa_switching_usage_context'[prepaid_percentage]), 100)",
+            "formatString": "0.00%",
+            "lineageTag": "a58bcb0d-db7e-4891-af8c-35e056790c58"
+          },
+          {
+            "name": "TRAI Unweighted Total MOU",
+            "expression": "AVERAGE('trai_lsa_switching_usage_context'[total_mou_per_month])",
+            "formatString": "#,0.00",
+            "lineageTag": "f275fd66-c1d6-419f-a1f0-9ceb6c30aad0"
+          },
+          {
+            "name": "TRAI Active Circles",
+            "expression": "DISTINCTCOUNT('trai_lsa_switching_usage_context'[canonical_lsa])",
+            "formatString": "#,0",
+            "lineageTag": "a5be0723-620f-43d8-afe6-75960f82531d"
+          },
+          {
+            "name": "TRAI Outgoing MOU",
+            "expression": "AVERAGE('trai_lsa_switching_usage_context'[outgoing_mou_per_month])",
+            "formatString": "#,0.00",
+            "lineageTag": "8be19787-2e7d-451e-948c-044f507f6686"
+          },
+          {
+            "name": "TRAI Incoming MOU",
+            "expression": "AVERAGE('trai_lsa_switching_usage_context'[incoming_mou_per_month])",
+            "formatString": "#,0.00",
+            "lineageTag": "b0527cbb-9ff4-48cf-abb8-e197b3dce3b3"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "trai_lsa_switching_usage_context",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\trai_lsa_switching_usage_context.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Clean = Table.TransformColumns(Headers, List.Transform({\"may_2026_porting_requests_millions\", \"june_2026_porting_requests_millions\", \"prepaid_percentage\", \"arpu_inr_per_month\", \"outgoing_sms_per_month\", \"outgoing_mou_per_month\", \"incoming_mou_per_month\", \"total_mou_per_month\"}, (col) => {col, each if _ = null or Text.Trim(_) = \"\" then null else _})),",
+                "    Typed = Table.TransformColumnTypes(Clean, {{\"canonical_lsa\", type text}, {\"zone\", type text}, {\"mnp_report_month\", type text}, {\"may_2026_porting_requests_millions\", type number}, {\"june_2026_porting_requests_millions\", type number}, {\"category\", type text}, {\"prepaid_percentage\", type number}, {\"arpu_inr_per_month\", type number}, {\"outgoing_sms_per_month\", type number}, {\"outgoing_mou_per_month\", type number}, {\"incoming_mou_per_month\", type number}, {\"total_mou_per_month\", type number}, {\"usage_reporting_period\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "trai_qos",
+        "columns": [
+          {
+            "name": "serial_number",
+            "dataType": "int64",
+            "lineageTag": "6f82b013-0ad5-4ed6-9ae1-ac1c4e327c18",
+            "sourceColumn": "serial_number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "operator",
+            "dataType": "string",
+            "lineageTag": "647b2021-0699-4ee6-95f9-b927b2b1c465",
+            "sourceColumn": "operator",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "lsa",
+            "dataType": "string",
+            "lineageTag": "d87debfc-2123-4fb5-972d-ba71f40bf39e",
+            "sourceColumn": "lsa",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_01",
+            "dataType": "double",
+            "lineageTag": "8391ac2d-eb58-42c3-8de3-a4ced3818a29",
+            "sourceColumn": "metric_01",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_02",
+            "dataType": "double",
+            "lineageTag": "e89e7f6e-5d28-4031-9bef-c91de17f9b52",
+            "sourceColumn": "metric_02",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_03",
+            "dataType": "double",
+            "lineageTag": "3a821e5d-31af-490e-8464-6540aa293950",
+            "sourceColumn": "metric_03",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_04",
+            "dataType": "double",
+            "lineageTag": "c759c61c-3a21-477d-8bcd-61e8e4ebdcc5",
+            "sourceColumn": "metric_04",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_05",
+            "dataType": "double",
+            "lineageTag": "1d12427c-a27e-417e-878a-7153520f64e9",
+            "sourceColumn": "metric_05",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_06",
+            "dataType": "double",
+            "lineageTag": "09f5427d-92dd-47ec-87c6-725b89bb3570",
+            "sourceColumn": "metric_06",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_07",
+            "dataType": "double",
+            "lineageTag": "c486bbe2-4c38-406b-a893-a891772585ca",
+            "sourceColumn": "metric_07",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_08",
+            "dataType": "double",
+            "lineageTag": "f7535266-1d94-4293-8af8-7074e034a2c5",
+            "sourceColumn": "metric_08",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_09",
+            "dataType": "double",
+            "lineageTag": "d99e5bb6-3b88-445b-94d9-0d8be9220753",
+            "sourceColumn": "metric_09",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_10",
+            "dataType": "double",
+            "lineageTag": "3e16e5a7-60d1-49f9-9f67-78485e605ad3",
+            "sourceColumn": "metric_10",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_11",
+            "dataType": "double",
+            "lineageTag": "7093197b-50a0-4f4c-93bb-7ae787d60f68",
+            "sourceColumn": "metric_11",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_12",
+            "dataType": "double",
+            "lineageTag": "321c2c71-dab4-4f5c-9382-490d29ed688d",
+            "sourceColumn": "metric_12",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "metric_13",
+            "dataType": "double",
+            "lineageTag": "1f7810f4-a1c0-47fb-ba0a-c022ac0dae17",
+            "sourceColumn": "metric_13",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "afd19b40-1b19-499b-b102-b6bcd8b88f6d",
+        "measures": [
+          {
+            "name": "QoS Avg Latency ms",
+            "expression": "AVERAGE('trai_qos'[metric_12])",
+            "formatString": "#,0.00",
+            "lineageTag": "bb28ec95-5cad-4310-b294-4cfc8d397fc5"
+          },
+          {
+            "name": "QoS Intra Call Setup Rate",
+            "expression": "DIVIDE(AVERAGE('trai_qos'[metric_05]), 100)",
+            "formatString": "0.00%",
+            "lineageTag": "4c36ab30-5a4e-40cd-a8ad-ca600d2c9f4b"
+          },
+          {
+            "name": "QoS Inter Call Setup Rate",
+            "expression": "DIVIDE(AVERAGE('trai_qos'[metric_06]), 100)",
+            "formatString": "0.00%",
+            "lineageTag": "2384c110-7264-4ded-a1e8-d2d5923fa35d"
+          },
+          {
+            "name": "QoS Avg Cell Downtime Pct",
+            "expression": "DIVIDE(AVERAGE('trai_qos'[metric_02]), 100)",
+            "formatString": "0.00%",
+            "lineageTag": "8c662bfa-f83c-405d-b3ff-c91e05879dde"
+          },
+          {
+            "name": "Latency cell color",
+            "expression": "VAR ms = [QoS Avg Latency ms] RETURN IF(ISBLANK(ms), BLANK(), IF(ms >= MEDIANX(ALLSELECTED(trai_qos), trai_qos[metric_12]), \"#F6E2BD\", \"#C6E5DF\"))",
+            "isHidden": true,
+            "lineageTag": "72ec5d10-01da-4ce5-85ca-dc0daf7cc9c2"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "trai_qos",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\trai_qos.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Clean = Table.TransformColumns(Headers, List.Transform({\"serial_number\", \"metric_01\", \"metric_02\", \"metric_03\", \"metric_04\", \"metric_05\", \"metric_06\", \"metric_07\", \"metric_08\", \"metric_09\", \"metric_10\", \"metric_11\", \"metric_12\", \"metric_13\"}, (col) => {col, each if _ = null or Text.Trim(_) = \"\" then null else _})),",
+                "    Typed = Table.TransformColumnTypes(Clean, {{\"serial_number\", Int64.Type}, {\"operator\", type text}, {\"lsa\", type text}, {\"metric_01\", type number}, {\"metric_02\", type number}, {\"metric_03\", type number}, {\"metric_04\", type number}, {\"metric_05\", type number}, {\"metric_06\", type number}, {\"metric_07\", type number}, {\"metric_08\", type number}, {\"metric_09\", type number}, {\"metric_10\", type number}, {\"metric_11\", type number}, {\"metric_12\", type number}, {\"metric_13\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ibm_telco_customer_churn",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "lineageTag": "95652c6f-9cc1-4e1c-829e-cb1033458e06",
+            "sourceColumn": "CustomerID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Count",
+            "dataType": "int64",
+            "lineageTag": "bbbe766a-3e8a-43c6-acd1-c71e7574e4ad",
+            "sourceColumn": "Count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "lineageTag": "fb445e05-9ef9-4bbd-98c4-e6ec94d80551",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "lineageTag": "57ee40f1-26c4-4292-9de0-0518687fde61",
+            "sourceColumn": "State",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "lineageTag": "f0f0ea4e-9ce5-46ab-9b8b-60d970589536",
+            "sourceColumn": "City",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Zip_Code",
+            "dataType": "string",
+            "lineageTag": "3cb602ff-a5a8-45a7-8a70-211548f9b2c3",
+            "sourceColumn": "Zip_Code",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Lat_Long",
+            "dataType": "string",
+            "lineageTag": "073ab33f-341f-49d1-bc66-3aa4eea5a008",
+            "sourceColumn": "Lat_Long",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Latitude",
+            "dataType": "double",
+            "lineageTag": "8da7636a-393a-4537-b360-7fc798c8328d",
+            "sourceColumn": "Latitude",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Longitude",
+            "dataType": "double",
+            "lineageTag": "8125e5f7-c0a0-4a69-a61f-bea6cf9e1fba",
+            "sourceColumn": "Longitude",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "lineageTag": "53476e54-eed0-4318-91e3-0bd37a040022",
+            "sourceColumn": "Gender",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Senior_Citizen",
+            "dataType": "string",
+            "lineageTag": "e8f9a5a0-a27f-46b9-8f25-dbebfef59775",
+            "sourceColumn": "Senior_Citizen",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Partner",
+            "dataType": "string",
+            "lineageTag": "3b58f30a-adde-44af-a7f5-0c45c739e0a5",
+            "sourceColumn": "Partner",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Dependents",
+            "dataType": "string",
+            "lineageTag": "e2fe4d7f-0c0c-4926-9c39-9aa975ec4520",
+            "sourceColumn": "Dependents",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Tenure_Months",
+            "dataType": "int64",
+            "lineageTag": "1f0fd22a-1340-443c-b741-e55cbc5f4c53",
+            "sourceColumn": "Tenure_Months",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Phone_Service",
+            "dataType": "string",
+            "lineageTag": "8cf9a56b-8ebc-499c-978e-72abc7811c6c",
+            "sourceColumn": "Phone_Service",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Multiple_Lines",
+            "dataType": "string",
+            "lineageTag": "6371f565-1658-498e-9fe8-26ab6185e280",
+            "sourceColumn": "Multiple_Lines",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Internet_Service",
+            "dataType": "string",
+            "lineageTag": "8a7f6aea-be96-4945-b97b-cb3660be44ef",
+            "sourceColumn": "Internet_Service",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Online_Security",
+            "dataType": "string",
+            "lineageTag": "43b14f32-3787-4edd-ab31-b1949673c6b8",
+            "sourceColumn": "Online_Security",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Online_Backup",
+            "dataType": "string",
+            "lineageTag": "a499b09e-11f4-4a96-bae1-8c2b50d536cd",
+            "sourceColumn": "Online_Backup",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Device_Protection",
+            "dataType": "string",
+            "lineageTag": "8369048b-e1fe-405a-abda-e8c82d132bd7",
+            "sourceColumn": "Device_Protection",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Tech_Support",
+            "dataType": "string",
+            "lineageTag": "24b226db-97e4-46c4-ad1b-0725f041b5fd",
+            "sourceColumn": "Tech_Support",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Streaming_TV",
+            "dataType": "string",
+            "lineageTag": "68051d57-e4ec-4aa1-9752-f4eac88a8ea7",
+            "sourceColumn": "Streaming_TV",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Streaming_Movies",
+            "dataType": "string",
+            "lineageTag": "384731d8-b073-4459-addd-aff209723c40",
+            "sourceColumn": "Streaming_Movies",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Contract",
+            "dataType": "string",
+            "lineageTag": "e0b74e4c-22b5-4f0b-89ce-6b64b445873e",
+            "sourceColumn": "Contract",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Paperless_Billing",
+            "dataType": "string",
+            "lineageTag": "bdb5e6ae-c109-4351-83e0-513603ce2c13",
+            "sourceColumn": "Paperless_Billing",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Payment_Method",
+            "dataType": "string",
+            "lineageTag": "9faea2b8-7e32-4a16-9036-d872ad0775b2",
+            "sourceColumn": "Payment_Method",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Monthly_Charges",
+            "dataType": "decimal",
+            "lineageTag": "a129ca7f-e8c7-4754-a678-72b085aedd10",
+            "sourceColumn": "Monthly_Charges",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Total_Charges",
+            "dataType": "decimal",
+            "lineageTag": "23395139-2a79-4308-b22d-4688197c4b41",
+            "sourceColumn": "Total_Charges",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Churn_Label",
+            "dataType": "string",
+            "lineageTag": "2cb332cb-71c7-465b-9988-db2f0b597a5a",
+            "sourceColumn": "Churn_Label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Churn_Value",
+            "dataType": "int64",
+            "lineageTag": "8be5ebf7-ecf8-4753-8681-6a0844268390",
+            "sourceColumn": "Churn_Value",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Churn_Score",
+            "dataType": "int64",
+            "lineageTag": "235e74e1-14f0-4fe6-a758-4af57a67afa7",
+            "sourceColumn": "Churn_Score",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CLTV",
+            "dataType": "int64",
+            "lineageTag": "1f2fef5d-ce3d-4501-b37a-dcab8eff9c6f",
+            "sourceColumn": "CLTV",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Churn_Reason",
+            "dataType": "string",
+            "lineageTag": "bd49a3d5-1ea2-490b-8cc2-c83e12d7f87e",
+            "sourceColumn": "Churn_Reason",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Tenure_Band",
+            "dataType": "string",
+            "expression": "SWITCH(TRUE(), 'ibm_telco_customer_churn'[Tenure_Months] <= 12, \"0–12 months\", 'ibm_telco_customer_churn'[Tenure_Months] <= 24, \"13–24 months\", 'ibm_telco_customer_churn'[Tenure_Months] <= 48, \"25–48 months\", \"49+ months\")",
+            "lineageTag": "a9487c7d-7290-4a5d-bf18-e2dce3b4e408",
+            "sortByColumn": "Tenure_Band_Order",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Tenure_Band_Order",
+            "dataType": "int64",
+            "expression": "SWITCH(TRUE(), 'ibm_telco_customer_churn'[Tenure_Months] <= 12, 1, 'ibm_telco_customer_churn'[Tenure_Months] <= 24, 2, 'ibm_telco_customer_churn'[Tenure_Months] <= 48, 3, 4)",
+            "isHidden": true,
+            "lineageTag": "64c2c2ea-83af-493d-b93c-cc1d903a15ad",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "22d52d78-c4d5-41f6-8d51-012990698b19",
+        "measures": [
+          {
+            "name": "IBM Customers",
+            "expression": "DISTINCTCOUNT('ibm_telco_customer_churn'[CustomerID])",
+            "formatString": "#,0",
+            "lineageTag": "1578c47d-56a1-4b34-b5bf-c3f4626ff23d"
+          },
+          {
+            "name": "IBM Churned Customers",
+            "expression": "CALCULATE(DISTINCTCOUNT('ibm_telco_customer_churn'[CustomerID]), 'ibm_telco_customer_churn'[Churn_Value] = 1)",
+            "formatString": "#,0",
+            "lineageTag": "61a583fa-d30d-4e89-9a58-458c21fc18e5"
+          },
+          {
+            "name": "IBM Retained Customers",
+            "expression": "CALCULATE(DISTINCTCOUNT('ibm_telco_customer_churn'[CustomerID]), 'ibm_telco_customer_churn'[Churn_Value] = 0)",
+            "formatString": "#,0",
+            "lineageTag": "cadae94a-1b5b-4c49-bad7-7b056fa2ddba"
+          },
+          {
+            "name": "IBM Churn Rate",
+            "expression": "DIVIDE([IBM Churned Customers], [IBM Customers])",
+            "formatString": "0.00%",
+            "lineageTag": "6d1181e8-646a-4a99-bd75-8b331cd483f4"
+          },
+          {
+            "name": "IBM Avg Monthly Charges",
+            "expression": "AVERAGE('ibm_telco_customer_churn'[Monthly_Charges])",
+            "formatString": "\"$\"#,0.00",
+            "lineageTag": "e1dd3c26-cc9c-47aa-9ceb-2c9f19d2bd53"
+          },
+          {
+            "name": "IBM Churned Monthly Charges",
+            "expression": "CALCULATE(SUM('ibm_telco_customer_churn'[Monthly_Charges]), 'ibm_telco_customer_churn'[Churn_Value] = 1)",
+            "formatString": "\"$\"#,0.00",
+            "lineageTag": "c67299e4-1725-4dfb-bc1e-29380ca41fa3"
+          },
+          {
+            "name": "IBM Avg Tenure",
+            "expression": "AVERAGE('ibm_telco_customer_churn'[Tenure_Months])",
+            "formatString": "#,0.00",
+            "lineageTag": "9846cded-7e3d-46db-90b0-72f216d5059c"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ibm_telco_customer_churn",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\ibm_telco_customer_churn.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Clean = Table.TransformColumns(Headers, List.Transform({\"Count\", \"Latitude\", \"Longitude\", \"Tenure_Months\", \"Monthly_Charges\", \"Total_Charges\", \"Churn_Value\", \"Churn_Score\", \"CLTV\"}, (col) => {col, each if _ = null or Text.Trim(_) = \"\" then null else _})),",
+                "    Typed = Table.TransformColumnTypes(Clean, {{\"CustomerID\", type text}, {\"Count\", Int64.Type}, {\"Country\", type text}, {\"State\", type text}, {\"City\", type text}, {\"Zip_Code\", type text}, {\"Lat_Long\", type text}, {\"Latitude\", type number}, {\"Longitude\", type number}, {\"Gender\", type text}, {\"Senior_Citizen\", type text}, {\"Partner\", type text}, {\"Dependents\", type text}, {\"Tenure_Months\", Int64.Type}, {\"Phone_Service\", type text}, {\"Multiple_Lines\", type text}, {\"Internet_Service\", type text}, {\"Online_Security\", type text}, {\"Online_Backup\", type text}, {\"Device_Protection\", type text}, {\"Tech_Support\", type text}, {\"Streaming_TV\", type text}, {\"Streaming_Movies\", type text}, {\"Contract\", type text}, {\"Paperless_Billing\", type text}, {\"Payment_Method\", type text}, {\"Monthly_Charges\", Currency.Type}, {\"Total_Charges\", Currency.Type}, {\"Churn_Label\", type text}, {\"Churn_Value\", Int64.Type}, {\"Churn_Score\", Int64.Type}, {\"CLTV\", Int64.Type}, {\"Churn_Reason\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "trai_national_wireless_usage_trends",
+        "columns": [
+          {
+            "name": "reporting_period",
+            "dataType": "string",
+            "lineageTag": "1aa32731-5cd8-4527-8ec5-7d3054697cdb",
+            "sortByColumn": "Period_Order",
+            "sourceColumn": "reporting_period",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "source_table",
+            "dataType": "string",
+            "lineageTag": "cc6b17ca-7725-4a3f-bd2e-afa42b6fc611",
+            "sourceColumn": "source_table",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "arpu_inr_per_month",
+            "dataType": "double",
+            "lineageTag": "4ab0e335-0990-41c5-be52-1bf8b59e56f6",
+            "sourceColumn": "arpu_inr_per_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "revenue_realization_per_gb_inr",
+            "dataType": "double",
+            "lineageTag": "a6a4089e-ac77-4ef3-bc4a-007301d222ec",
+            "sourceColumn": "revenue_realization_per_gb_inr",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mou_per_subscriber",
+            "dataType": "double",
+            "lineageTag": "fe55c20e-50d9-450d-a8df-a3fad09e264f",
+            "sourceColumn": "mou_per_subscriber",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "local_outgoing_mou",
+            "dataType": "double",
+            "lineageTag": "b23847f1-a4a6-4509-ae16-1882b99b746e",
+            "sourceColumn": "local_outgoing_mou",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "nld_outgoing_mou",
+            "dataType": "double",
+            "lineageTag": "8278e0ca-2fa7-4651-98c0-8ca17c059cd7",
+            "sourceColumn": "nld_outgoing_mou",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ild_outgoing_mou",
+            "dataType": "double",
+            "lineageTag": "2ee5325f-2604-485a-9301-566a2a9ffdf0",
+            "sourceColumn": "ild_outgoing_mou",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "outgoing_sms_per_subscriber",
+            "dataType": "double",
+            "lineageTag": "80f57956-6b83-4ccb-a9fb-8f9b447a5ca3",
+            "sourceColumn": "outgoing_sms_per_subscriber",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Period_Order",
+            "dataType": "int64",
+            "isHidden": true,
+            "lineageTag": "4812698f-d87e-437e-8d2b-65da1f537f0d",
+            "sourceColumn": "Period_Order",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "19d0317d-ac3e-4425-a18b-48d02852bffd",
+        "measures": [
+          {
+            "name": "National ARPU INR",
+            "expression": "AVERAGE('trai_national_wireless_usage_trends'[arpu_inr_per_month])",
+            "formatString": "\"₹\"#,0.00",
+            "lineageTag": "86c6c91d-a57c-4603-94b1-fbfb78dc2cde"
+          },
+          {
+            "name": "National Revenue per GB INR",
+            "expression": "AVERAGE('trai_national_wireless_usage_trends'[revenue_realization_per_gb_inr])",
+            "formatString": "\"₹\"#,0.00",
+            "lineageTag": "f6b983b3-3ffd-4174-9c25-fa526099a993"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "trai_national_wireless_usage_trends",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\trai_national_wireless_usage_trends.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Clean = Table.TransformColumns(Headers, List.Transform({\"arpu_inr_per_month\", \"revenue_realization_per_gb_inr\", \"mou_per_subscriber\", \"local_outgoing_mou\", \"nld_outgoing_mou\", \"ild_outgoing_mou\", \"outgoing_sms_per_subscriber\"}, (col) => {col, each if _ = null or Text.Trim(_) = \"\" then null else _})),",
+                "    Typed = Table.TransformColumnTypes(Clean, {{\"reporting_period\", type text}, {\"source_table\", type text}, {\"arpu_inr_per_month\", type number}, {\"revenue_realization_per_gb_inr\", type number}, {\"mou_per_subscriber\", type number}, {\"local_outgoing_mou\", type number}, {\"nld_outgoing_mou\", type number}, {\"ild_outgoing_mou\", type number}, {\"outgoing_sms_per_subscriber\", type number}}, \"en-US\"),",
+                "    Periods = Table.AddColumn(Typed, \"Period_Order\", each let d = Date.FromText(\"1 \" & [reporting_period], [Format=\"d MMMM yyyy\", Culture=\"en-US\"]) in Date.Year(d)*100 + Date.Month(d), Int64.Type)",
+                "in",
+                "    Periods"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "trai_wireless_broadband",
+        "columns": [
+          {
+            "name": "report_month",
+            "dataType": "string",
+            "lineageTag": "12dc0cb6-8d20-4602-b76b-2072ee9fc16b",
+            "sourceColumn": "report_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "broadband_type",
+            "dataType": "string",
+            "lineageTag": "a41d9798-517e-49c9-a786-87516891485b",
+            "sourceColumn": "broadband_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rank",
+            "dataType": "int64",
+            "lineageTag": "2d4522bf-0f74-4b3b-93a6-9407bd2bbe8a",
+            "sourceColumn": "rank",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "service_provider",
+            "dataType": "string",
+            "lineageTag": "bf9b1e48-0afa-49c9-abd5-8960675e2b39",
+            "sourceColumn": "service_provider",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "subscriber_base_million",
+            "dataType": "double",
+            "lineageTag": "b63f0fe4-6c1b-4b9d-973f-1ca06f3e705e",
+            "sourceColumn": "subscriber_base_million",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "source_file",
+            "dataType": "string",
+            "lineageTag": "eb8e7488-edd3-47d1-9a05-cf2b2758e86d",
+            "sourceColumn": "source_file",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "source_page",
+            "dataType": "int64",
+            "lineageTag": "6cce4b77-1b9b-4ec5-a226-752072fa0328",
+            "sourceColumn": "source_page",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "d7593bb6-d4ac-43aa-ac9b-66909c2a8778",
+        "measures": [
+          {
+            "name": "Wireless Subscribers M",
+            "expression": "SUM('trai_wireless_broadband'[subscriber_base_million])",
+            "formatString": "#,0.00",
+            "lineageTag": "d3772704-6bcd-411c-b546-089030bc21bd"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "trai_wireless_broadband",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\trai_wireless_broadband.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Clean = Table.TransformColumns(Headers, List.Transform({\"rank\", \"subscriber_base_million\", \"source_page\"}, (col) => {col, each if _ = null or Text.Trim(_) = \"\" then null else _})),",
+                "    Typed = Table.TransformColumnTypes(Clean, {{\"report_month\", type text}, {\"broadband_type\", type text}, {\"rank\", Int64.Type}, {\"service_provider\", type text}, {\"subscriber_base_million\", type number}, {\"source_file\", type text}, {\"source_page\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "trai_fixed_wired_broadband",
+        "columns": [
+          {
+            "name": "report_month",
+            "dataType": "string",
+            "lineageTag": "2bc12fcb-d434-44e4-af77-284beb579465",
+            "sourceColumn": "report_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "broadband_type",
+            "dataType": "string",
+            "lineageTag": "3c37c6c3-3026-4f57-83aa-72badaf64da3",
+            "sourceColumn": "broadband_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rank",
+            "dataType": "int64",
+            "lineageTag": "92649532-8791-4751-b834-db94b807f19e",
+            "sourceColumn": "rank",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "service_provider",
+            "dataType": "string",
+            "lineageTag": "34eed293-ca1d-4ef6-a480-30cd40caf07f",
+            "sourceColumn": "service_provider",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "subscriber_base_million",
+            "dataType": "double",
+            "lineageTag": "5723281a-214e-4ca9-92e4-ad83f283040f",
+            "sourceColumn": "subscriber_base_million",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "source_file",
+            "dataType": "string",
+            "lineageTag": "e34014f5-ccf3-45ec-a046-0ec70a96f4e8",
+            "sourceColumn": "source_file",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "source_page",
+            "dataType": "int64",
+            "lineageTag": "1123f55f-a46c-4045-bf09-84c044f3fdaa",
+            "sourceColumn": "source_page",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "2ea0a5d9-479c-44b5-bdb1-8ef2a36ea6c1",
+        "partitions": [
+          {
+            "name": "trai_fixed_wired_broadband",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\trai_fixed_wired_broadband.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Clean = Table.TransformColumns(Headers, List.Transform({\"rank\", \"subscriber_base_million\", \"source_page\"}, (col) => {col, each if _ = null or Text.Trim(_) = \"\" then null else _})),",
+                "    Typed = Table.TransformColumnTypes(Clean, {{\"report_month\", type text}, {\"broadband_type\", type text}, {\"rank\", Int64.Type}, {\"service_provider\", type text}, {\"subscriber_base_million\", type number}, {\"source_file\", type text}, {\"source_page\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

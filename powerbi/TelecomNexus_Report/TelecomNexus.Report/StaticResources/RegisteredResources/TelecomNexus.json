@@ -1,0 +1,13 @@
+{
+  "name": "TelecomNexus",
+  "dataColors": [
+    "#007F79",
+    "#5079AD",
+    "#D69838",
+    "#42637B",
+    "#79B9AB"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#10283F",
+  "tableAccent": "#007F79"
+}
